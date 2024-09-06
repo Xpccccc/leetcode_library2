@@ -2,6 +2,34 @@
 // https://leetcode.cn/problems/target-sum/
 // 494. 目标和
 
+
+// 递归Ï
+class Solution {
+    int ret, aim;
+
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        aim = target;
+        dfs(nums, 0, 0);
+        return ret;
+    }
+
+    void dfs(vector<int>& nums, int pos, int path) {
+        if (pos == nums.size()) {
+            if (path == aim)
+                ret++;
+            return;
+        }
+
+        // 加法
+        dfs(nums, pos + 1, path + nums[pos]); // 加到当前pos==n位置就可以了，到pos+1位置就该统计了
+
+        // 减法
+        dfs(nums, pos + 1, path - nums[pos]);
+    }
+};
+
+// 动态规划
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
