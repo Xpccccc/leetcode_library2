@@ -29,8 +29,7 @@ public:
 
         for (int k = 0; k < 4; ++k) {
             int x = dx[k] + i, y = dy[k] + j;
-            if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] &&
-                grid[x][y]) {
+            if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && grid[x][y]) {
                 vis[x][y] = true;
                 dfs(grid, x, y, path + grid[x][y]);
                 vis[x][y] = false;
