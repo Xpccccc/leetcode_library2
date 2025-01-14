@@ -2,6 +2,31 @@
 // https://leetcode.cn/problems/unique-paths/
 // 62. 不同路径
 
+
+// 记忆化搜索
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<vector<int>> memo(m + 1, vector<int>(n + 1));
+        return dfs(m, n, memo);
+    }
+
+    int dfs(int i, int j, vector<vector<int>>& memo) {
+        if (memo[i][j]) {
+            return memo[i][j];
+        }
+        if (i == 0 || j == 0)
+            return 0;
+        if (i == 1 && j == 1) {
+            memo[i][j] = 1;
+            return 1;
+        }
+        memo[i][j] = dfs(i - 1, j, memo) + dfs(i, j - 1, memo);
+        return memo[i][j];
+    }
+};
+
+// 动态规划
 class Solution {
 public:
     int uniquePaths(int m, int n) {
