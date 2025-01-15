@@ -2,6 +2,36 @@
 // https://leetcode.cn/problems/longest-increasing-subsequence/
 // 300. 最长递增子序列
 
+// 记忆化搜索
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        int ret = 0;
+
+        vector<int> memo(n);
+        for (int i = 0; i < n; ++i) {
+            ret = max(ret, dfs(i, nums, memo));
+        }
+
+        return ret;
+    }
+
+    int dfs(int pos, vector<int>& nums, vector<int>& memo) {
+        if (memo[pos])
+            return memo[pos];
+        int ret = 1;
+        for (int i = pos + 1; i < nums.size(); ++i) {
+            if (nums[pos] < nums[i]) {
+                ret = max(ret, dfs(i, nums, memo) + 1);
+            }
+        }
+        memo[pos] = ret;
+        return ret;
+    }
+};Ï
+
+// 动态规划
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
