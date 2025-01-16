@@ -8,7 +8,6 @@ public:
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size();
         int ret = 0;
-
         vector<int> memo(n);
         for (int i = 0; i < n; ++i) {
             ret = max(ret, dfs(i, nums, memo));
