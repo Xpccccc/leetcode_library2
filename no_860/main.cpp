@@ -5,7 +5,7 @@
 class Solution {
 public:
     bool lemonadeChange(vector<int>& bills) {
-        int five = 0, ten = 0;
+        int five = 0, ten = 0;// 十块和五块钱的个数
         for (auto e : bills) {
             if (e == 5)
                 five++;
