@@ -18,6 +18,7 @@ public:
                 if (five && ten) { // 贪心
                     --ten;
                     --five;
+                    // 有十块Ï先给10块
                 } else if (five >= 3) {
                     five -= 3;// 找零3个五块
                 } else {
